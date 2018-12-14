@@ -2,11 +2,13 @@ package com.hk.board.imps;
 
 import java.util.List;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.board.dtos.BoardDto;
+import com.hk.board.dtos.CriteriaDto;
 
 @Repository
 public class BoardDao implements IBoardDao {
@@ -41,7 +43,7 @@ public class BoardDao implements IBoardDao {
 	@Override
 	public boolean b_readCount(int b_seq) {
 		int count=0;
-		count = sqlSession.update(namespace+"readCount",b_seq);
+		count = sqlSession.update(namespace+"b_readCount",b_seq);
 		return count>0?true:false;
 	}
 
@@ -52,6 +54,22 @@ public class BoardDao implements IBoardDao {
 		return count>0?true:false;
 	}
 
+	@Override
+	public List<BoardDto> listCriteria(String page) throws Exception {
+	return sqlSession.selectList(namespace+"listCriteria", page);
+	}
+
+//	public List<BoardDto> listCriteria(CriteriaDto cri) throws Exception{
+//		return sqlSession.selectList(namespace+"listCriteria", cri);
+//	}
+
+	@Override
+	public Integer TotalCount() throws Exception {
+		return sqlSession.selectOne(namespace+"getTotalCount");
+	}
+
+
+	
 	
 
 }

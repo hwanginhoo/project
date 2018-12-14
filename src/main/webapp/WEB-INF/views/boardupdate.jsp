@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%request.setCharacterEncoding("UTF-8"); %>
 <%response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,9 @@
 <div>
 <h2>게시글 수정하기</h2>
 <form action="boardupdate.do" method="post">
-<input type="hidden" name="b_seq" value="${dto.b_seq}" />
+<input type ="hidden" name="b_seq" value="${dto.b_seq}" />
+<input type ="hidden" name="page" value="${cri.page}" />
+<input type ="hidden" name="perPageNum" value="${cri.perPageNum}" />
 	<table>
 		<tr>
 			<th>글 번호</th>
@@ -23,7 +26,7 @@
 		</tr>
 		<tr>
 			<th>작성일</th>
-			<td>${dto.b_regdate}</td>
+			<td><fmt:formatDate value="${dto.b_regdate}" pattern="yyyy-MM-dd a HH:mm"/></td>
 		</tr>
 		<tr>
 			<th>제목</th>
@@ -36,7 +39,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="submit" value="수정완료"/>
-				<button type="button" onclick="location.href='boardlist.do'">글목록</button>
+				<button type="button" onclick="location.href='boardlist.do?page=${cri.page}&perPageNum=${cri.perPageNum}'">글목록</button>
 			</td>
 		</tr>
 	</table>		

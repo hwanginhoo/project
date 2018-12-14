@@ -14,6 +14,11 @@
 </head>
 <body>
 <h2>게시글 상세보기</h2>
+<form method="post">
+<input type ="hidden" name="b_seq" value="${dto.b_seq}" />
+<input type ="hidden" name="page" value="${cri.page}" />
+<input type ="hidden" name="perPageNum" value="${cri.perPageNum}" />
+</form>
 <table>
 	<tr>
 		<th>글 번호</th>
@@ -25,7 +30,7 @@
 	</tr>
 	<tr>
 		<th>작성일</th>
-		<td>${dto.b_regdate}</td>
+		<td><fmt:formatDate value="${dto.b_regdate}" pattern="yyyy-MM-dd a HH:mm"/></td>
 	</tr>
 	<tr>
 		<th>제목</th>
@@ -37,9 +42,9 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<button onclick="updateForm('${dto.b_seq}')">수정</button>
-			<button onclick="delBoard('${dto.b_seq}')">삭제</button>
-			<button onclick="location.href='boardlist.do'">글목록</button>
+			<button type="submit" onclick="updateForm('${dto.b_seq}')">수정</button>
+			<button type="submit" onclick="delBoard('${dto.b_seq}')">삭제</button>
+			<button type="submit" onclick="location.href='boardlist.do?page=${cri.page}&perPageNum=${cri.perPageNum}'">글목록</button>
 		</td>
 	</tr>
 </table>
@@ -47,11 +52,11 @@
 <script type="text/javascript">
 	//수정폼으로 이동하는 함수
 	function updateForm(b_seq){
-		location.href="updateform.do?b_seq="+b_seq;
+		location.href="updateform.do?page=${cri.page}&perPageNum=${cri.perPageNum}&b_seq="+b_seq;
 	}
 	//게시글 삭제로 이동
 	function delBoard(b_seq){
-		location.href="delboard.do?b_seq="+b_seq;
+		location.href="delboard.do?page=${cri.page}&perPageNum=${cri.perPageNum}&b_seq="+b_seq;
 	}
 </script>
 </body>

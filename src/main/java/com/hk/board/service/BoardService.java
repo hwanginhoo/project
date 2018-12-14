@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.board.dtos.BoardDto;
+import com.hk.board.dtos.CriteriaDto;
 import com.hk.board.imps.IBoardDao;
 
 @Service
@@ -42,6 +43,20 @@ public class BoardService implements IBoardService {
 	@Override
 	public boolean delBoard(int b_seq) {
 		return boardDao.delBoard(b_seq);
+	}
+
+	@Override
+	public List<BoardDto> listCriteria(String page) throws Exception {
+	return boardDao.listCriteria(page);
+	}
+	
+//	public List<BoardDto> listCriteria(CriteriaDto cri) throws Exception{
+//		return boardDao.listCriteria(cri);
+//	}
+
+	@Override
+	public Integer totalCount() throws Exception {
+		return boardDao.TotalCount();
 	}
 
 }

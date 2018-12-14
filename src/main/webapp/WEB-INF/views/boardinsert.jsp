@@ -10,13 +10,34 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>글쓰기 페이지</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-Latest.js"></script>
+<script type="text/javascript">
+	//$function(){} ->onload ,$(document).ready())
+	$(function(){
+		//form에서 submit이벤트가 발생하면 function()기능 실행~~~
+		$("form").submit(function(){
+			var tds = $("form table td"); //[td,td,td,td] 
+			var tdVals = tds.slice(0,tds.length-1)   //마지막 td를 제외시키기위해 --> [td,td,td]
+			var bool = true;
+			tdVals.each(function(){     //each --> 배열의 길이만큼 함수를 실행
+				if($(this).children().eq(0).val()==""){  //this --> 첫번째실행은 첫번째td  두번째 실행은 두번쨰td ...td안에 첫번째요소의 val값이 ""인지 확인
+					alert($(this).prev("th").text() + "를 입력해주세요!");
+					$(this).children().eq(0).focus();
+					bool = false;
+					return false;
+				}        
+			});//each
+			return bool;
+		});//submit
+	});
+</script>
 </head>
 <body>
 <div>
 <h2>게시글 작성</h2>
     <form action="insertboard.do" method="post">
-        <table>
+        <table class="table table-striped table-hover">
         	<col width="100px"><col width="400px">
         	<tr>
         		<th>작성자</th>
