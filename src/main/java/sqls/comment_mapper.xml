@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.hk.board.comment">
+  	<!-- 댓글쿼리 -->
+	<select id="commentList" resultType="CommentDto">
+  		SELECT R_SEQ,M_ID,R_CONTENT,R_REGDATE
+  		FROM REPLY
+  		WHERE B_SEQ=#{b_seq}
+  		ORDER BY R_SEQ DESC
+  	</select>
+  
+  	<insert id="insertComment" parameterType="CommentDto">
+  		INSERT INTO REPLY VALUES
+  		(REPLY_SEQ.NEXTVAL,#{b_seq},#{m_id},#{r_content},sysdate)
+  		
+  	</insert>
+  	
+  	<update id="updateComment" parameterType="CommentDto">
+  		UPDATE REPLY
+  		SET R_CONTENT=#{r_content},R_REGDATE=sysdate
+  		WHERE R_SEQ=#{r_seq}
+  	</update>
+  	
+  	<delete id="delComment" parameterType="int">
+  		DELETE FROM REPLY WHERE R_SEQ=#{r_seq}
+  	</delete>	
+<!-- 	특정댓글조회 -->
+	<select id="readComment" resultType="CommentDto">
+		SELECT R_SEQ,B_SEQ,M_ID,R_CONTENT,R_REGDATE
+		FROM REPLY
+		WHERE R_SEQ=#{r_seq}
+	</select>
+  </mapper>

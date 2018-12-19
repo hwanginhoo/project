@@ -34,21 +34,16 @@
 		<c:otherwise>
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td>${dto.b_seq}</td>
-					<td>${dto.m_id}</td>
-<%-- 					<td><a href="detailboard.do?b_seq=${dto.b_seq}">${dto.b_title}</a></td> --%>
-					<td><a href="detailboard.do${pageMaker.makeQuery(pageMaker.cri.page) }&b_seq=${dto.b_seq}">${dto.b_title }</a>
-					<td><fmt:formatDate value="${dto.b_regdate}" pattern="yyyy-MM-dd a HH:mm"/></td>
-					<td>${dto.b_readcount}</td>
+					<td style="text-align:center">${dto.b_seq}</td>
+					<td style="text-align:center">${dto.m_id}</td>
+					<td style="text-align:center"><a href="detailboard.do${pageMaker.makeQuery(pageMaker.cri.page) }&b_seq=${dto.b_seq}">${dto.b_title }</a>
+					<td style="text-align:center"><fmt:formatDate value="${dto.b_regdate}" pattern="yyyy-MM-dd a HH:mm"/></td>
+					<td style="text-align:center">${dto.b_readcount}</td>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-<!-- 	<tr> -->
-<!-- 		<td colspan="10"> -->
-<!-- 			<a href="insertform.do">글쓰기</a> -->
-<!-- 		</td> -->
-<!-- 	</tr> -->
+
 </table>
 <ul>
     <!--
@@ -82,7 +77,23 @@
         </li>
     </c:if>  
 </ul>
+<%-- <form action="boardlist.do?page=1" onchange="this.form.submit()"> --%>
+<%-- 	<input type="hidden" name="page" value="${cri.page }" /> --%>
+<!-- 	<input type="radio" name="b_regdate" value="b_regdate" checked="checked"> 최신순 -->
+<!--   	<input type="radio" name="b_readcount" value="b_readcount"> 조회순 -->
+<!--   	<input type="radio" name="like" value="like"> 추천순 -->
+<%-- </form> --%>
 
+<form action="boardlist.do" method="get">
+<input type="hidden" name="page" value="${cri.page }" />
+<select id="pagelist" name="pagelist" onchange="this.form.submit()">
+	<option value="">선택</option>
+	<option value="b_regdate">최신순</option>
+	<option value="b_readcount">조회순</option>
+	<option value="like">추천순</option>
+</select>
+</form>
+<br /><br />
 <div>            
     <a href='insertform.do' id="write">글쓰기</a>            
 </div>

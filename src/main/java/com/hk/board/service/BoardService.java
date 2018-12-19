@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.board.dtos.BoardDto;
+import com.hk.board.dtos.CommentDto;
 import com.hk.board.dtos.CriteriaDto;
 import com.hk.board.imps.IBoardDao;
 
@@ -14,7 +15,7 @@ public class BoardService implements IBoardService {
 
 	@Autowired
 	private IBoardDao boardDao;
-	
+//------------------------게시판--------------------------	
 	@Override
 	public List<BoardDto> getAllList() {
 		return boardDao.getAllList();
@@ -44,19 +45,48 @@ public class BoardService implements IBoardService {
 	public boolean delBoard(int b_seq) {
 		return boardDao.delBoard(b_seq);
 	}
-
+	//조회순 출력
+	@Override
+	public List<BoardDto> getReadcountList() {
+		return boardDao.getReadcountList();
+	}
+//---------------------------페이징------------------------------------
 	@Override
 	public List<BoardDto> listCriteria(String page) throws Exception {
 	return boardDao.listCriteria(page);
 	}
 	
-//	public List<BoardDto> listCriteria(CriteriaDto cri) throws Exception{
-//		return boardDao.listCriteria(cri);
-//	}
 
 	@Override
 	public Integer totalCount() throws Exception {
 		return boardDao.TotalCount();
 	}
+//-----------------------------댓글------------------------------------
+	@Override
+	public List<CommentDto> commentList(int b_seq) {
+		return boardDao.commentList(b_seq);
+	}
+
+	@Override
+	public boolean insertComment(CommentDto dto) {
+		return boardDao.insertComment(dto);
+	}
+
+	@Override
+	public boolean replyBoardUpdate(CommentDto dto) {
+		return boardDao.replyBoardUpdate(dto);
+	}
+
+	@Override
+	public boolean delComment(int r_seq) {
+		return boardDao.delComment(r_seq);
+	}
+
+	@Override
+	public CommentDto readComment(int r_seq) {
+		return boardDao.readComment(r_seq);
+	}
+
+	
 
 }

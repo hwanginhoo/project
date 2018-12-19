@@ -6,9 +6,12 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.hk.board.dtos.BoardDto" alias="BoardDto" />
+        <typeAlias type="com.hk.board.dtos.CommentDto" alias="CommentDto" />
     </typeAliases>
+	
 
     <mappers>
         <mapper resource="/sqls/board_mapper.xml" />
+         <mapper resource="/sqls/comment_mapper.xml" />
     </mappers>
 </configuration>

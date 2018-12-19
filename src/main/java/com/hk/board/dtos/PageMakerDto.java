@@ -99,9 +99,9 @@ public class PageMakerDto {
         this.displayPageNum = displayPageNum;
     }
 
-    public String makeQuery(int pnum) {
+    public String makeQuery(int page) {
     	 
-        UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", pnum)
+        UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
                 .queryParam("perPageNum", cri.getPerPageNum()).build();
  
         return uriComponents.toUriString();
