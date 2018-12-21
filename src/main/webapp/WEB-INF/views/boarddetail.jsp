@@ -19,6 +19,7 @@
 <input type ="hidden" name="b_seq" value="${dto.b_seq}" />
 <input type ="hidden" name="page" value="${cri.page}" />
 <input type ="hidden" name="perPageNum" value="${cri.perPageNum}" />
+<input type="hidden" name="pagelist" value="${dto.pagelist}" />
 </form>
 <table>
 	<tr>
@@ -45,7 +46,7 @@
 		<td colspan="2">
 			<button type="button" onclick="updateForm('${dto.b_seq}')">수정</button>
 			<button type="button" onclick="delBoard('${dto.b_seq}')">삭제</button>
-			<button type="button" onclick="location.href='boardlist.do?page=${cri.page}&perPageNum=${cri.perPageNum}'">글목록</button>
+			<button type="button" onclick="location.href='boardlist.do?page=${cri.page}&pagelist=${pagelist}'">글목록</button>
 		</td>
 	</tr>
 </table>
@@ -56,11 +57,11 @@
 <script type="text/javascript">
 	//수정폼으로 이동하는 함수
 	function updateForm(b_seq){
-		location.href="updateform.do?page=${cri.page}&perPageNum=${cri.perPageNum}&b_seq="+b_seq;
+		location.href="updateform.do?page=${cri.page}&b_seq="+b_seq;
 	}
 	//게시글 삭제로 이동
 	function delBoard(b_seq){
-		location.href="delboard.do?page=${cri.page}&perPageNum=${cri.perPageNum}&b_seq="+b_seq;
+		location.href="delboard.do?page=${cri.page}&pagelist=${pagelist}&b_seq="+b_seq;
 	}
 </script>
 </body>

@@ -1,6 +1,7 @@
 package com.hk.board.dtos;
 
 import org.springframework.web.util.UriComponents;
+
 import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageMakerDto {
@@ -11,7 +12,7 @@ public class PageMakerDto {
     private int startPage; // 게시글 번호에 따른 (보여지는)페이지의 시작 번호
     private int endPage; // 게시글 번호에 따른 (보여지는)페이지의 마지막 번호
     private boolean prev; // 이전 버튼을 누를 수 있는 경우/없는 경우 분류를 위함
-    private boolean next;
+    private boolean next;//다음버튼 누를수 있는경우/없는경우 분류
  
     private int displayPageNum = 5; // 화면 하단에 보여지는 페이지의 개수
     private int tempEndPage;
@@ -25,7 +26,7 @@ public class PageMakerDto {
  
     private void calcData() { // 전체 필드 변수 값들을 계산하는 메서드
  
-        endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);//math.cceil -> 소수점을 올림한다
+        endPage = (int) (Math.ceil(cri.getPage() / (double) displayPageNum) * displayPageNum);//math.ceil -> 소수점을 올림한다
  
         startPage = (endPage - displayPageNum) + 1;
  

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class CommentDto {
 	
-	private int r_seq;
+	private int r_seq;   
 	private int b_seq;
 	private String m_id;
 	private String r_content;

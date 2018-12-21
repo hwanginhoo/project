@@ -14,7 +14,8 @@
 <form action="boardupdate.do" method="post">
 <input type ="hidden" name="b_seq" value="${dto.b_seq}" />
 <input type ="hidden" name="page" value="${cri.page}" />
-<input type ="hidden" name="perPageNum" value="${cri.perPageNum}" />
+<%-- <input type ="hidden" name="perPageNum" value="${cri.perPageNum}" /> --%>
+<%-- <input type="hidden" name="pagelist" value="${pagelist }" /> --%>
 	<table>
 		<tr>
 			<th>글 번호</th>
@@ -39,7 +40,7 @@
 		<tr>
 			<td colspan="2">
 				<input type="submit" value="수정완료"/>
-				<button type="button" onclick="location.href='boardlist.do?page=${cri.page}&perPageNum=${cri.perPageNum}'">글목록</button>
+				<button type="button" onclick="location.href='detailboard.do?page=${cri.page}&b_seq=${dto.b_seq}'">취소</button>
 			</td>
 		</tr>
 	</table>		

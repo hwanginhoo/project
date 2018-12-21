@@ -4,13 +4,13 @@ import java.util.List;
 
 
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.board.dtos.BoardDto;
 import com.hk.board.dtos.CommentDto;
-import com.hk.board.dtos.CriteriaDto;
 
 @Repository
 public class BoardDao implements IBoardDao {
@@ -25,11 +25,7 @@ public class BoardDao implements IBoardDao {
 		return sqlSession.selectList(namespace+"getAllContent");
 	}
 
-	//조회순으로 출력
-	@Override
-	public List<BoardDto> getReadcountList() {
-		return sqlSession.selectList(namespace+"getReadcountContent");
-	}
+	
 	@Override
 	public boolean insertBoard(BoardDto dto) {
 		int count = 0;
@@ -67,11 +63,13 @@ public class BoardDao implements IBoardDao {
 	public List<BoardDto> listCriteria(String page) throws Exception {
 	return sqlSession.selectList(namespace+"listCriteria", page);
 	}
+	@Override
+	public List<BoardDto> listCriteria1(String page) throws Exception {
+		return sqlSession.selectList(namespace+"listCriteria1", page);
+	}
 
-//	public List<BoardDto> listCriteria(CriteriaDto cri) throws Exception{
-//		return sqlSession.selectList(namespace+"listCriteria", cri);
-//	}
 
+//-------------게시글 전체 수 구하기------------------------------
 	@Override
 	public Integer TotalCount() throws Exception {
 		return sqlSession.selectOne(namespace+"getTotalCount");
@@ -108,6 +106,8 @@ public class BoardDao implements IBoardDao {
 	public CommentDto readComment(int r_seq) {
 		return sqlSession.selectOne(namespace1+"readComment",r_seq);
 	}
+
+	
 	
 	
 	

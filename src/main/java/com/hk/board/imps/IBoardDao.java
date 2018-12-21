@@ -3,29 +3,29 @@ package com.hk.board.imps;
 import java.util.List;
 
 
+
 import com.hk.board.dtos.BoardDto;
 import com.hk.board.dtos.CommentDto;
 
 public interface IBoardDao {
 	
-	public List<BoardDto> getAllList();
+	public List<BoardDto> getAllList(); //전체 게시글 보기
 	
-	public boolean insertBoard(BoardDto dto);
+	public boolean insertBoard(BoardDto dto); //게시글 추가
 	
-	public BoardDto getBoard(int b_seq);
+	public BoardDto getBoard(int b_seq);  //게시글 상세보기
 	
-	public boolean updateBoard(BoardDto dto);
+	public boolean updateBoard(BoardDto dto); //게시글 업데이트
 	
-	public boolean b_readCount(int b_seq);
+	public boolean b_readCount(int b_seq); //게시글 조회수
 	
-	public boolean delBoard(int b_seq);
+	public boolean delBoard(int b_seq); //게시글 삭제
 	
-	//게시판 조휘순으로 출력
-	public List<BoardDto> getReadcountList();
+	
 	
 	// [ 페이징 처리를 위한 메서드 ]
-    public List<BoardDto> listCriteria(String page) throws Exception;
-//	public List<BoardDto> listCriteria(CriteriaDto cri) throws Exception;
+    public List<BoardDto> listCriteria(String page) throws Exception;//최신순 10개씩
+	public List<BoardDto> listCriteria1(String page) throws Exception;//조회순 10개씩
  
     // 전체 게시글 수 구하기
     public Integer TotalCount() throws Exception;

@@ -8,6 +8,6 @@
 <title></title>
 </head>
 <body>
-<a href="boardlist.do?page=1">게시판이동</a>
+<a href="boardlist.do?page=1&pagelist=b_regdate">게시판이동</a>
 </body>
 </html>

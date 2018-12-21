@@ -37,6 +37,7 @@
 <div>
 <h2>게시글 작성</h2>
     <form action="insertboard.do" method="post">
+    <input type="hidden" name="pagelist" value="${dto.b_regdate }"/>
         <table class="table table-striped table-hover">
         	<col width="100px"><col width="400px">
         	<tr>

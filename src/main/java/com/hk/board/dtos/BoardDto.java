@@ -1,6 +1,7 @@
 package com.hk.board.dtos;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 public class BoardDto implements Serializable{
@@ -13,6 +14,13 @@ public class BoardDto implements Serializable{
 	private String b_content;
 	private Date b_regdate;
 	private int b_readcount;
+	private String pagelist;
+	public String getPagelist() {
+		return pagelist;
+	}
+	public void setPagelist(String pagelist) {
+		this.pagelist = pagelist;
+	}
 	public BoardDto() {
 		
 	}

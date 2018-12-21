@@ -2,9 +2,9 @@ package com.hk.board.service;
 
 import java.util.List;
 
+
 import com.hk.board.dtos.BoardDto;
 import com.hk.board.dtos.CommentDto;
-import com.hk.board.dtos.CriteriaDto;
 
 public interface IBoardService {
 	//---------------------게시판---------------------
@@ -20,12 +20,11 @@ public interface IBoardService {
 	
 	public boolean delBoard(int b_seq);
 	
-	//조회순 출력
-	public List<BoardDto> getReadcountList();
+	
 	
 	// ---------------페이징 처리 서비스 메서드----------------------
-    public List<BoardDto> listCriteria(String page) throws Exception;
-//	public List<BoardDto> listCriteria(CriteriaDto cri) throws Exception;
+    public List<BoardDto> listCriteria(String page) throws Exception;//최신순
+	public List<BoardDto> listCriteria1(String page) throws Exception;//조회순
  
     // 전체 게시글 수 구하기
     public Integer totalCount() throws Exception;

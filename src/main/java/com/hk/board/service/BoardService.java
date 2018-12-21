@@ -2,12 +2,12 @@ package com.hk.board.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.board.dtos.BoardDto;
 import com.hk.board.dtos.CommentDto;
-import com.hk.board.dtos.CriteriaDto;
 import com.hk.board.imps.IBoardDao;
 
 @Service
@@ -45,17 +45,17 @@ public class BoardService implements IBoardService {
 	public boolean delBoard(int b_seq) {
 		return boardDao.delBoard(b_seq);
 	}
-	//조회순 출력
-	@Override
-	public List<BoardDto> getReadcountList() {
-		return boardDao.getReadcountList();
-	}
+	
 //---------------------------페이징------------------------------------
 	@Override
 	public List<BoardDto> listCriteria(String page) throws Exception {
-	return boardDao.listCriteria(page);
+		return boardDao.listCriteria(page);
 	}
-	
+	@Override
+	public List<BoardDto> listCriteria1(String page) throws Exception {
+		return boardDao.listCriteria1(page);
+	}
+//------------------게시글 전체 수 구하기---------------------------------
 
 	@Override
 	public Integer totalCount() throws Exception {
@@ -87,6 +87,7 @@ public class BoardService implements IBoardService {
 		return boardDao.readComment(r_seq);
 	}
 
+	
 	
 
 }

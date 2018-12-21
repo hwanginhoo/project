@@ -6,7 +6,7 @@ public class CriteriaDto { //Criteria 클래스 : 페이징 처리를 위해서 
 	private int page; // 보여줄 페이지
     private int perPageNum; // 페이지당 보여줄 페이지수
  
-    // limit 구문에서 시작 부분에 필요한 값을 반환(mybatis에서 사용)
+    
     public int getPageStart(){
         return (this.page -1) * this.perPageNum;
     }

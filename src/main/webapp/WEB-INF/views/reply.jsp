@@ -33,7 +33,7 @@
 </head>
 <body>
 <!-- 댓글폼 -->
-<form action="insertcomment.do" method="post">
+<form action="insertcomment.do?page=${cri.page}&pagelist=${pagelist }" method="post">
 	<input type ="hidden" name="b_seq" value="${dto.b_seq}" />
 	<table>	
 		<tr>
